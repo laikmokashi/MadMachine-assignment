@@ -1,0 +1,10 @@
+{
+    "name": "Offline Request Handler",
+    "short_name": "RequestHandler",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "A PWA that queues requests when offline and sends them when back online."
+    
+  }
+  
