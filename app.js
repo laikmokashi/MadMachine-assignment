@@ -12,7 +12,7 @@ if (navigator.onLine) {
 
   //event handler for hit me button , request sent once hit me button gets cliked
 function sendRequest() {
-    const url = 'https://webhook.site/6553b826-b49b-47ae-9b6a-c924a0c506af'; 
+    const url = 'https://webhook.site/65fed4de-5718-4749-8924-989671b9016a'; 
     //checking if systme in online or offline 
     if (navigator.onLine) {
         // if online hitting requested api
@@ -23,15 +23,21 @@ function sendRequest() {
             },
             mode: 'no-cors'
         })
-        .then(response => response.json())
         .then(data => {
-            console.log('Request successful:', data)
-            document.getElementById('action').style.display = 'block'
-            document.getElementById('action').style.color = 'green'
-            document.getElementById('action').innerHTML = 'Action performed successfully'
-            setTimeout(() => {
-                document.getElementById('action').style.display = 'none'
-            }, 5000);
+            // We are not getting 200 after success hence condition is for 0 and 200
+            if(data.status == 0 ||data.status == 200){
+                console.log('Request successful:', data)
+                document.getElementById('action').style.display = 'block'
+                document.getElementById('action').style.color = 'green'
+                document.getElementById('action').innerHTML = 'Action performed successfully'
+                setTimeout(() => {
+                    document.getElementById('action').style.display = 'none'
+                }, 5000);
+            }else{
+                throw('')
+            }
+                
+            
         })
         .catch(error =>{ console.error('Request failed:', error)
             document.getElementById('action').style.display = 'block'
@@ -80,7 +86,6 @@ window.addEventListener('online', () => {
             },
             mode: 'no-cors'
         })
-        .then(response => response.json())
         .then(data => console.log('Request successful:', data))
         .catch(error => {console.error('Request failed:', error)
             document.getElementById('action').style.display = 'block'
